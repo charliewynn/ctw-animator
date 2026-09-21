@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTW Animator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>CTW Animator</h1>
+<p class="sub">Playground for the CTW logo <b>wireframe-build</b> animation. Edges draw on from the ground up, then faces fill in behind them. Tweak the timing, colors, and light — export the result as video.</p>
+<div class="wrap">
+  <div class="panel stage">
+    <canvas id="stage" width="600" height="600"></canvas>
+    <div class="row transport">
+      <button id="btn-play" class="primary">⏸ Pause</button>
+      <button id="btn-restart">⟲ Restart</button>
+      <button id="btn-export">⬇ Export video</button>
+      <span id="frame-label" class="hint">frame 1 / 48</span>
+    </div>
+    <div id="export-link" class="hint"></div>
+  </div>
+  <div class="panel controls">
+    <h2>Timing</h2>
+    <div class="ctl"><label>Total frames <span id="v-total">48</span></label>
+      <input id="s-total" type="range" min="12" max="120" value="48"></div>
+    <div class="ctl"><label>Edge build frames <span id="v-edge">36</span></label>
+      <input id="s-edge" type="range" min="4" max="120" value="36"></div>
+    <div class="ctl"><label>Faces start at <span id="v-facestart">61</span>% of edge build</label>
+      <input id="s-facestart" type="range" min="0" max="100" value="61"></div>
+    <div class="ctl"><label>Playback fps <span id="v-fps">12</span></label>
+      <input id="s-fps" type="range" min="1" max="30" value="12"></div>
+
+    <h2>Build order</h2>
+    <div class="row">
+      <label class="chk"><input type="radio" name="order" value="ground" checked> Ground up</label>
+      <label class="chk"><input type="radio" name="order" value="random"> Random</label>
+    </div>
+
+    <h2>Colors</h2>
+    <div class="ctl"><label>Clay base</label>
+      <input id="c-base" type="color" value="#d2af84"></div>
+    <div class="ctl"><label>Edge color</label>
+      <input id="c-edge" type="color" value="#6e5037"></div>
+    <div class="ctl"><label>Edge line width <span id="v-lw">2</span></label>
+      <input id="s-lw" type="range" min="1" max="6" value="2"></div>
+
+    <h2>Light</h2>
+    <div class="ctl"><label>Light X <span id="v-lx">-0.50</span></label>
+      <input id="s-lx" type="range" min="-100" max="100" value="-50"></div>
+    <div class="ctl"><label>Light Y <span id="v-ly">0.75</span></label>
+      <input id="s-ly" type="range" min="-100" max="100" value="75"></div>
+    <div class="ctl"><label>Light Z <span id="v-lz">-0.40</span></label>
+      <input id="s-lz" type="range" min="-100" max="100" value="-40"></div>
+    <div class="ctl"><label>Ambient <span id="v-amb">0.62</span></label>
+      <input id="s-amb" type="range" min="0" max="100" value="62"></div>
+
+    <h2>About</h2>
+    <p class="hint">127-triangle CTW solid (W = right face, T = front, C = top). Isometric projection, flat shading, painter's-algorithm faces. Python originals live in <code>tools/</code>.</p>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
